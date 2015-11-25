@@ -13,12 +13,12 @@ numbers={
 
 br = mechanize.Browser()
 #br.set_all_readonly(False)
-#br.set_handle_robots(False)
-#br.set_handle_refresh(False)
-#br.addheaders=[('User-agent', 'Firefox')]
+br.set_handle_robots(False)
+br.set_handle_refresh(False)
+br.addheaders=[('User-agent', 'Firefox')]
 
-response = br.open(url)
-print response.read()
+site = br.open(url, timeout=5)
+print site.read()
 
 #find the forms
 for form in br.forms():
