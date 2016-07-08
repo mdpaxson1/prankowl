@@ -3,11 +3,11 @@ import mechanize
 
 url = 'http://www.prankowl.com/#operatorprank'
 numbers={
-		'Will'    : 9044519026,
-		'Me'      : 9043034359,
-		'Alex'    : 9045716116,
-		'Brandon' : 9045241603,
-		'Austin'  : 9042546406
+		'Will'    : XXXXXXXXXX,
+		'Me'      : XXXXXXXXXX,
+		'Alex'    : XXXXXXXXXX,
+		'Brandon' : XXXXXXXXXX,
+		'Austin'  : XXXXXXXXXX
 	}
 
 
