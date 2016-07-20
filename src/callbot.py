@@ -60,8 +60,8 @@ class SeleniumStuff:
 if __name__ == "__main__":
 	username = "kettleofketchup"
 	password = ""
-	num1 = "9044776066"
-	num2 = "9044775569"
+	num1 = ""
+	num2 = ""
 
 	url = 'http://www.prankowl.com/#operatorprank'
 	#url = "http://google.com"
