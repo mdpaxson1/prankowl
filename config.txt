@@ -1,0 +1,5 @@
+[callbot]
+visibleBrowser = 0
+numbers =
+	9043034359
+	9043034359

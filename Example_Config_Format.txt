@@ -1,0 +1,5 @@
+[callbot]
+visibleBrowser = 0
+numbers =
+	1111111111
+	1111111111
