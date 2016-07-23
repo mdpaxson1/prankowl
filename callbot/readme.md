@@ -13,7 +13,10 @@ sudo pip install -- upgrade html5lib
 pip install mechanize
 pip install bs4
 pip install python-lxml
-]
+
 
 
 ```
+
+
+make a config.txt file to read the numbers in3

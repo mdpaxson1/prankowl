@@ -4,13 +4,15 @@ from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import random
+import config
+import time
 
 class SeleniumStuff:
 	def __init__(self, url ):
 
 		# make it a headless driver
-		display = Display(visible=1, size=(800, 600))
-		display.start()
+		self.display = Display(visible=config.visibleBrowser, size=(800, 600))
+		self.display.start()
 
 		self.driver = webdriver.Chrome()
 		print "driver started"
@@ -57,30 +59,29 @@ class SeleniumStuff:
 		elem_submit.click()
 
 
+
+def callPeople():
+	counter = 0
+	while counter < 3: # you are give 3 credits in a day
+		url = 'http://www.prankowl.com/#operatorprank'
+		sel = SeleniumStuff(url)
+
+		num1 = random.choice(config.numbers)
+		num2 = random.choice(config.numbers)
+		id1 = random.choice(config.numbers)
+		id2 = random.choice(config.numbers)
+
+		sel.operatorPrank(1, num1, id1, 1, num2, id2)
+		counter+=1
+		time.sleep(120)
+
+
+
+
+
+
 if __name__ == "__main__":
-	username = "kettleofketchup"
-	password = ""
-	num1 = ""
-	num2 = ""
-
-	url = 'http://www.prankowl.com/#operatorprank'
-	#url = "http://google.com"
-
-	#browser = Browser(url, username, password)
-
-
-	# prankowl the form will be
-
-	#response = browser.login( 0 )
-
-	#browser.br.back()
-
-	#response = browser.operatorPrank(2, num1, num1, 1, num2, num2)
-
-	#print response.read()
-	#browser.printForms()
-	sel = SeleniumStuff(url)
-
-	sel.operatorPrank(1, num1, num2, 1, num2, num1)
-
-	# random.choice(numbers)
+	secondsInDay = 86400
+	while (True):
+		callPeople()
+		time.sleep(secondsInDay)
