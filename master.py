@@ -1,100 +1,70 @@
-import ConfigParser
-from  callbot.callbot import * #import call bot python
-import random
 import subprocess
-import os
-import sys
+import socket
+
+class MasterServer:
+	# eventually will use some type of socket connection for remote master server
+	def __init__ (self, host="localhost", port=60000 ):
+		self.host = host
+		self.port = port
+
+		try:
+			self.spinUpCallbotController()
+		except Exception:
+			print "Couldn't start Subprocess callbot control"
+			self.callbot_process = None
+
+		try:
+			self.socket = self.startServer()
+		except Exception:
+			self.socket = None
+			print "Socket Error"
+
+		self.receiveData()
+
+
+	#the subproceses can communicate with the master through this
+	def startServer ( self ):
+		try:
+			serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+			serverSocket.bind ( (self.host, self.port) )
+			print "created Socket"
+			return serverSocket #serverSocket = self.socket
+		except Exception:
+			print "Couldn't start socket"
+			return None
+
+	def receiveData(self):
+		#if there was no error  in creating the socket
+		if self.socket != None:
+			self.socket.listen(1)
+			conn, addr = self.socket.accept()
+			print 'Connected by', addr
+			while True:
+				data = conn.recv(1024)
+				if not data: break
+				conn.sendall(data)
+			conn.close()
 
 
 
+	#if arguments takes some type of command line arguments, these arguments can also be sent through the socket
+	def spinUpCallbotController(self, arguments=None):
+		cmdArgumnents = ("python", "callbotControl.py")
+		self.callbot_process = subprocess.Popen(cmdArgumnents)
 
+	def __del__(self):
+		#checks to see if the callbot process hasn't been closed, and then closes it
 
-
-class configSetup:
-
-	configFile = "config.txt" #static
-
-	def __init__(self):
-
-		self.config = ConfigParser.ConfigParser()
-		self.config.read(self.configFile)
-
-	def readValue(self):
-		self.config.read(self.configFile)
-
-		numbers = self.config.get('callbot','numbers').split()
-
-		visibleBrowser = self.config.get("callbot", "visibleBrowser")
-
-		self.callbot = callbot (numbers, visibleBrowser)
-
-
-
-
-class CallingBot:
-
-	def __init__ (self, numbers, visibility):
-		self.numbers = numbers
-		self.visibility = visibility
-
-	def CallThemselves(self):
-		victim = random.choice(self.numbers)
-		self.n1 = victim
-		self.n2 = victim
-		self.id1 = random.choice(self.numbers)
-		self.id2 = random.choice(self.numbers)
-		cmdArguments = self.call()
-		return cmdArguments
-
-
-	def call(self):
-
-		cmdArguments = "python"
-		cmdArguments += " callbot.py"
-		cmdArguments += ' -n1 ' + str(self.n1)
-		cmdArguments +=  " -id1 " + str(self.id1)
-		cmdArguments += " -n2 " + str(self.n2)
-		cmdArguments +=  " -id2 " + str(self.id2)
-		cmdArguments +=  " -v " + str(self.visibility)
-
-		cmdArguments = list(cmdArguments.split() )
-
-		return cmdArguments
-
-
-
-
-def callbotWrapper(config):
-	counter = 0
-
-	while counter < 5:
-
-		relativePath ="callbot"
-		#get working directory
-		origWD = os.getcwd()
-		#change directory
-		os.chdir(os.path.join(os.path.abspath(origWD),relativePath))
-
-
-		config.readValue()
-
-		callbot =  CallingBot(config.callbot.numbers, config.callbot.visibleBrowser)
-
-		cmdArguments = callbot.CallThemselves()
-		p1 = subprocess.Popen(cmdArguments)
-		os.chdir (origWD )
-
-		counter += 1
-		time.sleep(10)
-
+		if self.callbot_process != None:
+			try:
+				self.callbot_process.kill()
+				self.callbot_process = None
+				self.serverS
+			except Exception:
+					print "error"
 
 
 
 if __name__ == "__main__":
-	secondsInDay = 86400
-
-	config = configSetup()
-	while(True):
-		callbotWrapper(config)
-		print "more trolling tomorrow"
-		time.sleep(secondsInDay)
+	masterServer = MasterServer()
+	masterServer.spinUpCallbotController()
