@@ -7,77 +7,46 @@ import random
 import ConfigParser
 import time
 import argparse
-import socket
 
-class callbotConfig:
+
+
+class redditConfig:
 	def __init__(self, numbers, visibleBrowser=0):
 		self.numbers = numbers
 		self.visibleBrowser = visibleBrowser #0 or 1
 
 class BrowserBot:
-	url = 'http://www.prankowl.com/#operatorprank'
 
-	def __init__(self, visibility ):
 
-		url = 'http://www.prankowl.com/#operatorprank'
+	def __init__(self, visibilty, url):
 
-		self.visibility = visibility
 		# make it a headless driver
-		self.display = Display(visible=self.visibility, size=(800, 600))
-
+		self.display = Display(visible=visibility, size=(800, 600))
 		self.display.start()
 
 		self.driver = webdriver.Chrome()
 		print "driver started"
-		self.url = 'http://www.prankowl.com/#operatorprank'
+		self.url = url
 
 
 		print "Navigating to: " + url
 		self.driver.get(url)
 
 
+	#
+	#
+	def dislikeComment(self, cssIdentifier):
 
-
-	def operatorPrank(self, cc1, number1, ci1, id1, cc2, number2, ci2, id2):
-
-		print "Number1: " + str(cc1) + str(number1) + "    Caller ID 1: " + str(id1)
-
-		print "Number2: " + str(cc2) + str(number2) + "    Caller ID 2: " + str(id2)
-
-		#elem_num1_country = self.driver.find_element_by_id("number1_country")
-		#elem_num1_country.send_keys(cc1)
-
-
-		elem_num1 = self.driver.find_element_by_id("number1")
+		elem_dislike_btn = self.driver.find_element_by_id("number1")
 		#click first to remove placeholder text
 		elem_num1.click()
 		elem_num1.send_keys(number1)
 
-		elem_id1 = self.driver.find_element_by_id("callerid1")
-		#click first to remove placeholder text
-		elem_id1.click()
-		elem_id1.send_keys(id1)
-
-		#elem_id1_country = self.driver.find_element_by_id("callerid1_country")
-		#elem_id1.send_keys(cc1)
-
-		elem_num2  = self.driver.find_element_by_id("number2")
-		#click first to remove placeholder text
-		elem_num2.click()
-		elem_num2.send_keys(number2)
-
-		elem_id2 = self.driver.find_element_by_id("callerid2")
-		#click first to remove placeholder text
-		elem_id2.click()
-		elem_id2.send_keys(id2)
-
-		#press the submit button
-		elem_submit = self.driver.find_element_by_id("submit")
-		elem_submit.click()
-
 		time.sleep(40)
-		self.display.stop() # close the virtual display
-		self.driver.quit() # close the current driv
+		self.display.stop()
+
+
+
 
 
 #parser is already defined
@@ -94,9 +63,6 @@ def commandlineArguments():
 	parser.add_argument('-ci2', "--ci2", help="# country coude for id2")
 	parser.add_argument("-id2", "--id2", help="# caller id for nuber 2")
 	parser.add_argument("-v", "--v", help="#visible browser (1:True 0:")
-	parser.add_argument("-sh", "--sh", help="server hostname")
-	parser.add_argument("-sp", "--sp", help="server hostport")
-
 	args = parser.parse_args()
 
 	if args.c1 == None:
@@ -108,11 +74,7 @@ def commandlineArguments():
 	if args.ci2 == None:
 		args.ci2 = 1
 	if args.v == None:
-		args.v = 0
-	if args.sh == None:
-		args.sh = "localhost"
-	if args.sp == None:
-		args.sp = 60001
+		args.v == 0
 
 	if args.n1 == None or args.n2 == None:
 		print "-c1 \tcountry code for number1 (default 1)"
@@ -139,5 +101,9 @@ if __name__ == "__main__":
 	args = commandlineArguments()
 	browser = BrowserBot(args.v) #args.v = visibility
 
-
 	browser.operatorPrank(args.c1, args.n1, args.ci1, args.id1, args.c2, args.n2, args.ci2, args.id2)
+
+
+	#while (True):
+	#	callPeople()
+	#	time.sleep(secondsInDay)
