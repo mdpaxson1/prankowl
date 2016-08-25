@@ -1,0 +1,26 @@
+[callbot]
+visibleBrowser = 0
+numbers =
+	1111111111
+	1111111111
+botWaitTime = 5
+
+[reddit]
+#the account that will be targeted by the bot
+targetAccount = targetAccountName
+
+#how long to wait to spawn each sel bot
+botwaitTime = 5
+
+#the list of accounts for each username and password for the bots
+accountList =
+	username, password
+	username1, password2
+
+#used to make each bot connect to a different proxy to throw off bot checkers
+# use space to seperate
+[proxyList]
+proxyList =
+	proxyip proxport
+	proxy2
+	proxy3
