@@ -1,7 +1,7 @@
 import subprocess
 import socket
 import time
-import console
+
 class MasterServer:
     # eventually will use some type of socket connection for remote master server
     def __init__ (self, host="localhost", port=60000 ):
@@ -71,7 +71,7 @@ class MasterServer:
 if __name__ == "__main__":
     secondsInDay = 86400
     while True:
-        print ("\n=============================")
+        print ("\n=====================================")
         print ("I reckon I'll troll someone now\n")
 
         masterServer = MasterServer()
