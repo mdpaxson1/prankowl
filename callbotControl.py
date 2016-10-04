@@ -175,10 +175,11 @@ def callbotWrapper(config, callbotServer):
 
 		print "sending message to master...\n" + message
 
-		callbotServer.sendMessageToMaster(message)
+		#callbotServer.sendMessageToMaster(message)
 
 		counter += 1
-		time.sleep(10)
+
+		time.sleep(300 + randin(60, 600));
 
 if __name__ == "__main__":
 	secondsInDay = 86400
@@ -186,10 +187,7 @@ if __name__ == "__main__":
 	config = configSetup()
 
 	#passes ports and server information to the callbot server
-	callbotServer = CallbotServer(config.callbotHost, config.callbotPort, config.masterHost, config.masterPort)
+	callbotServer = CallbotServer()
 
 
 	callbotWrapper(config, callbotServer)
-
-	print "more trolling tomorrow"
-	time.sleep(secondsInDay)
