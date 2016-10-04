@@ -1,6 +1,26 @@
+
+```
+░░░░▄▄▄▄▀▀▀▀▀▀▀▀▄▄▄▄▄▄
+░░░░█░░░░▒▒▒▒▒▒▒▒▒▒▒▒░░▀▀▄
+░░░█░░░▒▒▒▒▒▒░░░░░░░░▒▒▒░░█
+░░█░░░░░░▄██▀▄▄░░░░░▄▄▄░░░█
+░▀▒▄▄▄▒░█▀▀▀▀▄▄█░░░██▄▄█░░░█
+█▒█▒▄░▀▄▄▄▀░░░░░░░░█░░░▒▒▒▒▒█
+█▒█░█▀▄▄░░░░░█▀░░░░▀▄░░▄▀▀▀▄▒█
+░█▀▄░█▄░█▀▄▄░▀░▀▀░▄▄▀░░░░█░░█
+░░█░░▀▄▀█▄▄░█▀▀▀▄▄▄▄▀▀█▀██░█
+░░░█░░██░░▀█▄▄▄█▄▄█▄████░█
+░░░░█░░░▀▀▄░█░░░█░███████░█
+░░░░░▀▄░░░▀▀▄▄▄█▄█▄█▄█▄▀░░█
+░░░░░░░▀▄▄░▒▒▒▒░░░░░░░░░░█
+░░░░░░░░░░▀▀▄▄░▒▒▒▒▒▒▒▒▒▒░█
+░░░░░░░░░░░░░░▀▄▄▄▄▄░░░░░█
+```
+
 # Trolling Services
 
 This will have a variety of different applications to assist users in trolling people.
+Current working version is a call bot that will make two people call eachother
 
 # Install ubuntu 14.04
 
@@ -13,7 +33,6 @@ sudo apt-get install build essentials
 sudo apt-get install python-pip
 
 ```
-
 
 # ------------------PYTHON LIBS-----------------
 
@@ -44,22 +63,7 @@ sudo ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
 The master.py will start up and control individual subprocesses of the callbot and redditBot.
 
 callbot control.py will itself
+=
+# Make a config.txt 
 
-```
-░░░░▄▄▄▄▀▀▀▀▀▀▀▀▄▄▄▄▄▄
-░░░░█░░░░▒▒▒▒▒▒▒▒▒▒▒▒░░▀▀▄
-░░░█░░░▒▒▒▒▒▒░░░░░░░░▒▒▒░░█
-░░█░░░░░░▄██▀▄▄░░░░░▄▄▄░░░█
-░▀▒▄▄▄▒░█▀▀▀▀▄▄█░░░██▄▄█░░░█
-█▒█▒▄░▀▄▄▄▀░░░░░░░░█░░░▒▒▒▒▒█
-█▒█░█▀▄▄░░░░░█▀░░░░▀▄░░▄▀▀▀▄▒█
-░█▀▄░█▄░█▀▄▄░▀░▀▀░▄▄▀░░░░█░░█
-░░█░░▀▄▀█▄▄░█▀▀▀▄▄▄▄▀▀█▀██░█
-░░░█░░██░░▀█▄▄▄█▄▄█▄████░█
-░░░░█░░░▀▀▄░█░░░█░███████░█
-░░░░░▀▄░░░▀▀▄▄▄█▄█▄█▄█▄▀░░█
-░░░░░░░▀▄▄░▒▒▒▒░░░░░░░░░░█
-░░░░░░░░░░▀▀▄▄░▒▒▒▒▒▒▒▒▒▒░█
-░░░░░░░░░░░░░░▀▄▄▄▄▄░░░░░█
-```
-# Make a config.txt file
+
