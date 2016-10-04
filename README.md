@@ -23,6 +23,8 @@ sudo pip install argparse
 sudo pip install pyvirtualdisplay
 sudo pip install selenium
 sudo apt-get install xserver-xephyr
+sudo pip install console
+ss
 ```
 # Chrome Driver
 need to install chrome driver and add to path
@@ -42,3 +44,20 @@ sudo ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
 The master.py will start up and control individual subprocesses of the callbot and redditBot.
 
 callbot control.py will itself
+
+
+░░░░▄▄▄▄▀▀▀▀▀▀▀▀▄▄▄▄▄▄
+░░░░█░░░░▒▒▒▒▒▒▒▒▒▒▒▒░░▀▀▄
+░░░█░░░▒▒▒▒▒▒░░░░░░░░▒▒▒░░█
+░░█░░░░░░▄██▀▄▄░░░░░▄▄▄░░░█
+░▀▒▄▄▄▒░█▀▀▀▀▄▄█░░░██▄▄█░░░█
+█▒█▒▄░▀▄▄▄▀░░░░░░░░█░░░▒▒▒▒▒█
+█▒█░█▀▄▄░░░░░█▀░░░░▀▄░░▄▀▀▀▄▒█
+░█▀▄░█▄░█▀▄▄░▀░▀▀░▄▄▀░░░░█░░█
+░░█░░▀▄▀█▄▄░█▀▀▀▄▄▄▄▀▀█▀██░█
+░░░█░░██░░▀█▄▄▄█▄▄█▄████░█
+░░░░█░░░▀▀▄░█░░░█░███████░█
+░░░░░▀▄░░░▀▀▄▄▄█▄█▄█▄█▄▀░░█
+░░░░░░░▀▄▄░▒▒▒▒░░░░░░░░░░█
+░░░░░░░░░░▀▀▄▄░▒▒▒▒▒▒▒▒▒▒░█
+░░░░░░░░░░░░░░▀▄▄▄▄▄░░░░░█

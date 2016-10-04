@@ -20,19 +20,18 @@ class BrowserBot:
 	def __init__(self, visibility ):
 
 		url = 'http://www.prankowl.com/#operatorprank'
+		self.visibility = int(visibility)
 
-		self.visibility = visibility
 		# make it a headless driver
 		self.display = Display(visible=self.visibility, size=(800, 600))
 
 		self.display.start()
 
 		self.driver = webdriver.Chrome()
-		print "driver started"
 		self.url = 'http://www.prankowl.com/#operatorprank'
 
 
-		print "Navigating to: " + url
+		#print "Navigating to: " + url
 		self.driver.get(url)
 
 
@@ -114,6 +113,7 @@ def commandlineArguments():
 	if args.sp == None:
 		args.sp = 60001
 
+
 	if args.n1 == None or args.n2 == None:
 		print "-c1 \tcountry code for number1 (default 1)"
 	 	print "-n1 \tnumber1 to call without country code"
@@ -126,6 +126,7 @@ def commandlineArguments():
 		print "-id2 \tcaller id for number2"
 		print "-v  \t 1:Visible 0:Invisible browser (0 is default)"
 		print "-h \tfor help"
+
 
 	return args
 
