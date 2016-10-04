@@ -61,3 +61,5 @@ callbot control.py will itself
 ░░░░░░░▀▄▄░▒▒▒▒░░░░░░░░░░█
 ░░░░░░░░░░▀▀▄▄░▒▒▒▒▒▒▒▒▒▒░█
 ░░░░░░░░░░░░░░▀▄▄▄▄▄░░░░░█
+
+# Make a config.txt file

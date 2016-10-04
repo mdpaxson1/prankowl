@@ -172,16 +172,16 @@ def callbotWrapper(config, callbotServer):
         p1 = subprocess.Popen(cmdArguments)
         os.chdir (origWD )
 
-        message = "Number1: " + callbot.n1 +"\n"
-        message += " Caller ID 1: " + callbot.id1 + "\n"
+        #message = "Number1: " + callbot.n1 +"\n"
+        #message += "Caller ID 1: " + callbot.id1 + "\n"
 
-        message += " Number2: " + callbot.n2 + "\n"
-        message += " Caller ID 2: " + callbot.id2  +"\n"
+        #message += "Number2: " + callbot.n2 + "\n"
+        #message += " Caller ID 2: " + callbot.id2  +"\n"
 
-        message += "....Starting bot\n"
+        #message += "....Starting bot\n"
 
         #print "sending message to master...\n" + message
-        print message
+        #print message
 
         #callbotServer.sendMessageToMaster(message)
 
