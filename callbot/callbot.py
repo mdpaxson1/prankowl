@@ -39,7 +39,7 @@ class BrowserBot:
 
 	def operatorPrank(self, cc1, number1, ci1, id1, cc2, number2, ci2, id2):
 
-		print "Number1: " + str(cc1) + str(number1) + "    Caller ID 1: " + str(id1)
+		print "\n\nNumber1: " + str(cc1) + str(number1) + "    Caller ID 1: " + str(id1)
 
 		print "Number2: " + str(cc2) + str(number2) + "    Caller ID 2: " + str(id2)
 

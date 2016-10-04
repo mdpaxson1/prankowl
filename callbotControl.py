@@ -6,6 +6,24 @@ import os
 import sys
 import socket
 
+def countdown(t):
+    import time
+    print('More trolling in...')
+    while t >= 0:
+        if t < 10:
+            sys.stdout.write("Trolling In: " + str(t) +"\n")
+            sys.stdout.flush()
+            time.sleep(1)
+            t -= 1
+        else:
+            sys.stdout.write("Trolling In: " + str(t) +"\n")
+            sys.stdout.flush()
+            time.sleep(20)
+            t -= 20
+    print('Troll comencing! \n \n \n \n \n')
+
+t=3
+
 class CallbotServer:
     def __init__ (self, host="localhost", port=60001, masterHost = "localhost", masterPort=60000 ) :
         self.host = host
@@ -151,7 +169,6 @@ class CallingBot:
 
 
 
-
 def callbotWrapper(config, callbotServer):
     counter = 0
 
@@ -168,7 +185,7 @@ def callbotWrapper(config, callbotServer):
 
         callbot =  CallingBot(config.callbot.numbers, config.callbot.visibleBrowser)
 
-        cmdArguments = callbot.CallThemselves()
+        cmdArguments = callbot.CallPeople()
         p1 = subprocess.Popen(cmdArguments)
         os.chdir (origWD )
 
@@ -186,8 +203,9 @@ def callbotWrapper(config, callbotServer):
         #callbotServer.sendMessageToMaster(message)
 
         counter += 1
+        randomTime = 300 + random.randint(60, 600)
+        countdown(randomTime)
 
-        time.sleep(300 + random.randint(60, 600))
 
 if __name__ == "__main__":
     secondsInDay = 86400
