@@ -173,7 +173,7 @@ def callbotWrapper(config, callbotServer):
     counter = 0
 
     while counter < 5:
-        random.seed("memes")
+
         relativePath ="callbot"
         #get working directory
         origWD = os.getcwd()
@@ -205,6 +205,7 @@ def callbotWrapper(config, callbotServer):
         counter += 1
         randomTime = 300 + random.randint(60, 600)
         countdown(randomTime)
+
 
 
 if __name__ == "__main__":
