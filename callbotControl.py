@@ -177,11 +177,12 @@ def callbotWrapper(config, callbotServer):
     #change directory
     os.chdir(os.path.join(os.path.abspath(origWD),relativePath))
 
-    while counter < 5 :
+    while counter < 6:
         cmdArguments = callbot.CallPeople()
         p1 = subprocess.Popen(cmdArguments)
         #callbotServer.sendMessageToMaster(message)
         counter += 1
+        time.sleep(1)
 
     os.chdir (origWD )
 
