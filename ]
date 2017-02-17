@@ -123,23 +123,19 @@ class CallingBot:
         victim = random.choice(self.numbers)
         if len(self.numbers) ==2:
             self.n1 = self.numbers[0]
-            self.id1 = self.numbers[0]
             self.n2 = self.numbers[1]
-            self.id2 = self.numbers[1]
-
-        elif len(self.numbers) <2:
+        else if len(self.numbers) <2)
             self.n1 = self.numbers[0]
             self.id1 = self.numbers[0]
             self.id2 = self.numbers[0]
             self.n2 = self.numbers[0]
-        else:
-            self.n1 = random.choice(self.numbers)
-            self.numbers.remove(self.n1)
-            self.n2 = random.choice(self.numbers)
-            self.numbers.remove(self.n2)
-            self.id1 = random.choice(self.numbers)
-            self.id2 = random.choice(self.numbers)
 
+        self.n1 = random.choice(self.numbers)
+        self.numbers.remove(self.n1)
+        self.n2 = random.choice(self.numbers)
+        self.numbers.remove(self.n2)
+        self.id1 = random.choice(self.numbers)
+        self.id2 = random.choice(self.numbers)
         cmdArguments = self.call()
         return cmdArguments
 
@@ -179,6 +175,12 @@ def callbotWrapper(config, callbotServer):
 
     while counter < 5 :
         cmdArguments = callbot.CallPeople()
+        callbot.numbers.remove(callbot.n1)
+        try:
+            callbot.numbers.remove(callbot.n2)
+        except:
+            pass
+
         p1 = subprocess.Popen(cmdArguments)
         #callbotServer.sendMessageToMaster(message)
         counter += 1
