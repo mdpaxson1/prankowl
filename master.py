@@ -60,7 +60,6 @@ class MasterServer:
             try:
                 self.callbot_process.kill()
                 self.callbot_process = None
-                self.serverS
             except Exception:
                     #print "error"
                     return None

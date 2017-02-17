@@ -21,26 +21,17 @@ class BrowserBot:
 
 		url = 'http://www.prankowl.com/#operatorprank'
 		self.visibility = int(visibility)
-
 		# make it a headless driver
 		self.display = Display(visible=self.visibility, size=(800, 600))
-
 		self.display.start()
-
 		self.driver = webdriver.Chrome()
 		self.url = 'http://www.prankowl.com/#operatorprank'
-
-
 		#print "Navigating to: " + url
 		self.driver.get(url)
-
-
-
 
 	def operatorPrank(self, cc1, number1, ci1, id1, cc2, number2, ci2, id2):
 
 		print "\n\nNumber1: " + str(cc1) + str(number1) + "    Caller ID 1: " + str(id1)
-
 		print "Number2: " + str(cc2) + str(number2) + "    Caller ID 2: " + str(id2)
 
 		#elem_num1_country = self.driver.find_element_by_id("number1_country")
@@ -74,7 +65,7 @@ class BrowserBot:
 		elem_submit = self.driver.find_element_by_id("submit")
 		elem_submit.click()
 
-		time.sleep(40)
+		time.sleep(15)
 		self.display.stop() # close the virtual display
 		self.driver.quit() # close the current driv
 
@@ -119,7 +110,6 @@ def commandlineArguments():
 	 	print "-n1 \tnumber1 to call without country code"
 		print "-ci1 \tcountry code for caller id1 (default1)"
 		print "-id1 \tcaller id for number 1 "
-
 		print "-c2 \tcountry code for number2 (default 1)"
 		print "-n2 \tnumber2 to make number1 call without country code"
 		print "-ci2 \tcountry code for callerid 2 (default1)"

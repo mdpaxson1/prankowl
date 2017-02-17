@@ -22,7 +22,6 @@ def countdown(t):
             t -= 20
     print('Troll comencing! \n \n \n \n \n')
 
-t=3
 
 class CallbotServer:
     def __init__ (self, host="localhost", port=60001, masterHost = "localhost", masterPort=60000 ) :
@@ -49,8 +48,6 @@ class CallbotServer:
                 self.receiveData()
             except Exception:
                 print ""
-
-
 
     def startServer ( self, host, port ):
         try:
@@ -86,11 +83,9 @@ class CallbotServer:
                 conn.sendall(data)
             conn.close()
 
-
     # pass message to master
     def sendMessageToMaster(self, message):
         self.masterServer.send(message)
-
 
     def __del__(self):
         if self.masterServer != None:
@@ -110,23 +105,13 @@ class configSetup:
 
     def readValue(self):
         self.config.read(self.configFile)
-
         numbers = self.config.get('callbot','numbers').split()
-
         visibleBrowser = self.config.get("callbot", "visibleBrowser")
-
         self.callbot = callbotConfig (numbers, visibleBrowser)
-
         self.masterHost = self.config.get('server', 'masterHost')
-
         self.masterPort = self.config.get('server', 'masterPort')
-
         self.callbotHost = self.config.get('server', 'callbotHost')
-
         self.callbotPort = self.config.get('server', 'callbotPort')
-
-
-
 
 class CallingBot:
 
@@ -154,7 +139,6 @@ class CallingBot:
 
 
     def call(self):
-
         cmdArguments = "python"
         cmdArguments += " callbot.py"
         cmdArguments += ' -n1 ' + str(self.n1)
@@ -162,7 +146,6 @@ class CallingBot:
         cmdArguments += " -n2 " + str(self.n2)
         cmdArguments +=  " -id2 " + str(self.id2)
         cmdArguments +=  " -v " + str(self.visibility)
-
         cmdArguments = list( cmdArguments.split() )
 
         return cmdArguments
@@ -170,50 +153,33 @@ class CallingBot:
 
 
 def callbotWrapper(config, callbotServer):
+    config.readValue()
+    relativePath ="callbot"
     counter = 0
+    callbot =  CallingBot(config.callbot.numbers, config.callbot.visibleBrowser)
+    #get working directory
+    origWD = os.getcwd()
+    #change directory
+    os.chdir(os.path.join(os.path.abspath(origWD),relativePath))
 
-    while counter < 5:
-        random.seed("memes")
-        relativePath ="callbot"
-        #get working directory
-        origWD = os.getcwd()
-        #change directory
-        os.chdir(os.path.join(os.path.abspath(origWD),relativePath))
-
-
-        config.readValue()
-
-        callbot =  CallingBot(config.callbot.numbers, config.callbot.visibleBrowser)
-
+    while counter < 5 :
         cmdArguments = callbot.CallPeople()
+        callbot.numbers.remove(callbot.n1)
+        try:
+            callbot.numbers.remove(callbot.n2)
+        except:
+            pass
+
         p1 = subprocess.Popen(cmdArguments)
-        os.chdir (origWD )
-
-        #message = "Number1: " + callbot.n1 +"\n"
-        #message += "Caller ID 1: " + callbot.id1 + "\n"
-
-        #message += "Number2: " + callbot.n2 + "\n"
-        #message += " Caller ID 2: " + callbot.id2  +"\n"
-
-        #message += "....Starting bot\n"
-
-        #print "sending message to master...\n" + message
-        #print message
-
         #callbotServer.sendMessageToMaster(message)
-
         counter += 1
-        randomTime = 300 + random.randint(60, 600)
-        countdown(randomTime)
+
+    os.chdir (origWD )
 
 
 if __name__ == "__main__":
     secondsInDay = 86400
-
     config = configSetup()
-
     #passes ports and server information to the callbot server
     callbotServer = CallbotServer()
-
-
     callbotWrapper(config, callbotServer)
